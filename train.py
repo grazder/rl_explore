@@ -7,7 +7,7 @@ from PIL import Image
 
 
 def save_log(agent, config, iter_number):
-    env = config['env_class'](config['enf_config'])
+    env = config['env_class'](config['env_config'])
     obs = env.reset()
     Image.fromarray(env._map.render(env._agent)).convert('RGB').resize((500, 500), Image.NEAREST).save('tmp.png')
 
@@ -39,6 +39,8 @@ def train(config):
     tune.register_env(config['env_name'], lambda cfg: config['env_class'](**cfg))
 
     agent = config['agent'](config['agent_config'])
+
+    raise Exception
 
     for iter_number in range(config['n_iters']):
         result = agent.train()
