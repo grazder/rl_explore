@@ -1,6 +1,8 @@
 import os
 import sys
+import numpy as np
 from gym import spaces
+from typing import Tuple, Dict, Any
 
 sys.path.append(os.path.abspath("mapgen"))
 os.environ["PYTHONPATH"] = os.path.abspath("mapgen")
@@ -19,11 +21,11 @@ class ModifiedDungeon(Dungeon):
         self.observation_space = spaces.Box(0, 1, [observation_size, observation_size, 3])
         self.action_space = spaces.Discrete(3)
 
-    def reset(self):
+    def reset(self) -> np.ndarray:
         observation = super().reset()
         return observation[:, :, :-1]
 
-    def step(self):
-        observation, reward, done, info = super().step()
+    def step(self, action: int) -> Tuple[np.ndarray, float, bool, Dict[str, Any]]:
+        observation, reward, done, info = super().step(action)
         observation = observation[:, :, :-1]  # remove trajectory
         return observation, reward, done, info
