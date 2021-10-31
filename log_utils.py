@@ -1,19 +1,17 @@
-import os
 import wandb
-from PIL import Image
 
 
 def save_gifs(agent, config, log_wandb: bool = True, gif_path: str = None) -> None:
     env = config['env_class'](**config['env_config'])
     obs = env.reset()
-    Image.fromarray(env._map.render(env._agent)).convert('RGB').resize((500, 500), Image.NEAREST).save('tmp.png')
+    env.get_image_view().save("start.png")
 
     frames = []
 
     for _ in range(config['eval_steps']):
         action = agent.compute_single_action(obs)
 
-        frame = Image.fromarray(env._map.render(env._agent)).convert('RGB').resize((500, 500), Image.NEAREST).quantize()
+        frame = env.get_image_view().quantize()
         frames.append(frame)
 
         obs, reward, done, info = env.step(action)
