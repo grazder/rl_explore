@@ -22,7 +22,7 @@ def evaluate(config, checkpoint_path, n_runs, output_folder):
     agent.restore(checkpoint_path)
 
     for i in tqdm(range(n_runs)):
-        gif_path = os.path.join(output_folder, f"run-{i + 1}")
+        gif_path = os.path.join(output_folder, f"run-{i + 1}.gif")
         save_gifs(agent, config, gif_path=gif_path, log_wandb=False)
 
 
