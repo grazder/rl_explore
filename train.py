@@ -40,8 +40,6 @@ def train(config):
 
     agent = config['agent'](config['agent_config'])
 
-    raise Exception
-
     for iter_number in range(config['n_iters']):
         result = agent.train()
         file_name = agent.save(config['checkpoint_save_dir'])

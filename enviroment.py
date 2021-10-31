@@ -8,7 +8,6 @@ os.environ["PYTHONPATH"] = os.path.abspath("mapgen")
 from mapgen import Dungeon
 
 
-
 class ModifiedDungeon(Dungeon):
     def __init__(self, width: int = 20, height: int = 20, max_rooms: int = 3,
                  min_room_xy: int = 5, max_room_xy: int = 12,
