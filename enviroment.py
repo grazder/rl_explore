@@ -33,5 +33,5 @@ class ModifiedDungeon(Dungeon):
         observation, reward, done, info = super().step(action)
         observation = observation[:, :, :-1]
         is_new = int(info['is_new'])
-        reward -= 1 / self._max_steps + is_new * self._reward_a + (is_new - 1) * self._reward_b
+        reward += - 1 / self._max_steps + is_new * self._reward_a + (is_new - 1) * self._reward_b
         return observation, reward, done, info
