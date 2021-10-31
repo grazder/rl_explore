@@ -27,5 +27,6 @@ class ModifiedDungeon(Dungeon):
 
     def step(self, action: int) -> Tuple[np.ndarray, float, bool, Dict[str, Any]]:
         observation, reward, done, info = super().step(action)
-        observation = observation[:, :, :-1]  # remove trajectory
+        observation = observation[:, :, :-1]
+        reward -= 1 / self._max_steps
         return observation, reward, done, info
