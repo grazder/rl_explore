@@ -1,10 +1,24 @@
-### Run example
+# Prod.Stories RL (HW 5)
 
-1. Install requirements:
+## Подготовка 
+
+1. Установка всех пакетов:
 `pip install -r requirements.txt`
 
-2. Clone submodules
+2. Клонирование подмодулей
 `git submodule update --remote`
+   
+## Обучение
 
-3. Run training
-`python ppo_example.py`
+`python train.py --config train_config.yaml`
+   
+`train_config.yaml` - файл со всеми параметрами в формате HyperPyYaml
+
+## Валидация
+
+`python eval.py --config train_config.yaml --checkpoint <CHECKPOINT_PATH> --n-runs <N_RUNS> --output <OUTPUT_FOLDER>`
+
+`checkpoint` - путь до нужного чекпоинта
+`n-runs` - число экспериментов
+`output` - путь, куда будут сохраняться все результаты экспериментов
+

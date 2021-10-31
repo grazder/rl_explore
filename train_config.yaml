@@ -15,7 +15,7 @@ env_config:
   vision_radius: 5
   max_steps: 1000
   reward_a: 1
-  reward_b: 0
+  reward_b: 0.2
 
 # Model settings
 kernel: !tuple (3, 3)
