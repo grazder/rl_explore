@@ -28,7 +28,8 @@ def train(config):
         log_metrics(iter_number, result)
 
         if (iter_number + 1) % 5 == 0:
-            save_gifs(agent, config, iter_number)
+            gif_path = os.path.join(config['gifs_save_dir'], f"out{iter_number + 1}.gif")
+            save_gifs(agent, config, gif_path=gif_path)
 
 
 if __name__ == "__main__":

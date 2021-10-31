@@ -19,6 +19,8 @@
 `python eval.py --config train_config.yaml --checkpoint <CHECKPOINT_PATH> --n-runs <N_RUNS> --output <OUTPUT_FOLDER>`
 
 `checkpoint` - путь до нужного чекпоинта
+
 `n-runs` - число экспериментов
+
 `output` - путь, куда будут сохраняться все результаты экспериментов
 
