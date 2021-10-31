@@ -13,7 +13,7 @@ def save_log(agent, config, iter_number):
 
     frames = []
 
-    for _ in range(config.eval_steps):
+    for _ in range(config['eval_steps']):
         action = agent.compute_single_action(obs)
 
         frame = Image.fromarray(env._map.render(env._agent)).convert('RGB').resize((500, 500), Image.NEAREST).quantize()
