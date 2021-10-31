@@ -14,6 +14,7 @@ env_config:
   observation_size: 11
   vision_radius: 5
   max_steps: 1000
+  reward_
 
 # Model settings
 kernel: !tuple (3, 3)

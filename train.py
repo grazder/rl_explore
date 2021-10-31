@@ -34,8 +34,8 @@ def train(config):
 if __name__ == "__main__":
     # Reading config
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, required=True,
-                        help='path to hyperpyyaml config')
+    parser.add_argument("config", type=str, required=True,
+                        help='path to HyperPyYaml config')
     args = parser.parse_args()
 
     with open(args.config) as f:

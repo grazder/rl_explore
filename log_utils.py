@@ -3,7 +3,7 @@ import wandb
 from PIL import Image
 
 
-def save_gifs(agent, config, iter_number: int) -> None:
+def save_gifs(agent, config, iter_number: int, log_wandb: bool = True) -> None:
     env = config['env_class'](**config['env_config'])
     obs = env.reset()
     Image.fromarray(env._map.render(env._agent)).convert('RGB').resize((500, 500), Image.NEAREST).save('tmp.png')
@@ -22,7 +22,9 @@ def save_gifs(agent, config, iter_number: int) -> None:
 
     gif_path = os.path.join(config['gifs_save_dir'], f"out{iter_number + 1}.gif")
     frames[0].save(gif_path, save_all=True, append_images=frames[1:], loop=0, duration=1000 / 60)
-    wandb.log({"video": wandb.Video(gif_path, fps=30, format="gif")})
+
+    if log_wandb:
+        wandb.log({"video": wandb.Video(gif_path, fps=30, format="gif")})
 
 
 def log_metrics(iter_number, result):
