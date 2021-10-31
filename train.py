@@ -7,7 +7,7 @@ from PIL import Image
 
 
 def save_log(agent, config, iter_number):
-    env = config['env_class'](config['env_config'])
+    env = config['env_class'](**config['env_config'])
     obs = env.reset()
     Image.fromarray(env._map.render(env._agent)).convert('RGB').resize((500, 500), Image.NEAREST).save('tmp.png')
 
