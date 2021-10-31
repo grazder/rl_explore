@@ -1,10 +1,9 @@
 import argparse
-import os
 import ray
 import wandb
 from hyperpyyaml import load_hyperpyyaml
 from ray import tune
-from logging import *
+from logging import log_metrics, save_gifs
 
 
 def train(config):
